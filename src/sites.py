@@ -14,7 +14,8 @@ from selenium.webdriver.edge.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from config import ROOT_PATH, SCREENSHOT_PATH, SCREENSHOT_FILENAME, MONITOR_ID
+from config import ROOT_PATH, SCREENSHOT_PATH, SCREENSHOT_FILENAME, MONITOR_ID, WEBDRIVER, \
+    WEBDRIVER_PATH
 from util import p
 
 
@@ -31,6 +32,10 @@ class Site(ABC):
 
     def get_id(self) -> int:
         return self.site_id
+
+    @staticmethod
+    def get_driver():
+        return WEBDRIVER(executable_path=WEBDRIVER_PATH)
 
     def grab(self, company_name: str, monitor_id: int = MONITOR_ID) -> bool:
         screen_shot_path = SCREENSHOT_PATH.format(company_name=company_name)
@@ -52,7 +57,7 @@ class Site(ABC):
                                        SCREENSHOT_FILENAME.format(
                                            site_name=str(self.get_id()) + "-" + self.get_name(),
                                            file_name="screen.png"))
-        driver = webdriver.Edge()
+        driver = Site.get_driver()
         try:
             ele = self.get_screenshot_element(company_name, driver)
 

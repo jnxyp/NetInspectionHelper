@@ -1,5 +1,7 @@
 from os.path import dirname, abspath, join
 
+from selenium import webdriver
+
 DEBUG = True
 ROOT_PATH = dirname(abspath(__file__))
 
@@ -16,6 +18,12 @@ INCLUDED_SITES_FILE_PATH = join(ROOT_PATH, 'included_sites.txt')
 
 # 抓取失败后的最大重试次数
 MAX_RETRY = 3
+
+# 浏览器类型及驱动路径
+# WEBDRIVER = webdriver.Chrome
+WEBDRIVER = webdriver.Edge
+# WEBDRIVER_PATH = join(ROOT_PATH, 'msedgedriver.exe')
+WEBDRIVER_PATH = 'MicrosoftWebDriver.exe'
 
 if __name__ == '__main__':
     print(ROOT_PATH)

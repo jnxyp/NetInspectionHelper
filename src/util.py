@@ -2,7 +2,7 @@ from config import DEBUG
 
 
 def read_file(path: str) -> list:
-    with open(path) as file:
+    with open(path, encoding='utf8') as file:
         return file.readlines()
 
 
