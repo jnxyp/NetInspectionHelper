@@ -364,6 +364,14 @@ class STATS(Site):
     name = "国家统计局网站"
     initial_url = "http://www.stats.gov.cn/was5/web/search?channelid=288041&andsen={company_name}"
 
+    @classmethod
+    def get_screenshot_element(cls, company_name: str, driver: WebDriver):
+        driver.get(cls.get_initial_url(company_name))
+        driver.maximize_window()
+
+        time.sleep(2)
+
+        return driver.find_element_by_tag_name('html')
 
 class NEA(Site):
     site_id = 27
@@ -461,11 +469,12 @@ SITES_BY_ID = {
 
 if __name__ == '__main__':
     # print(SITES)
-    # company_name = "常高新集团有限公司"
+    company_name = "常高新集团有限公司"
+    STATS.grab(company_name)
     # for s in SITES:
     #     s.grab(company_name)
     pass
-    print(SITES_BY_ID.keys())
+    # print(SITES_BY_ID.keys())
     # for name, cls in inspect.getmembers(sys.modules[__name__]):
     #     if inspect.isclass(cls) and issubclass(cls, Site) and cls is not NotImplementedSite:
     #         print(cls)
