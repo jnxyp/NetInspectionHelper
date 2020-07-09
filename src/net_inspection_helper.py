@@ -1,7 +1,6 @@
-from os.path import join, exists
+import os
 
 from config import COMPANY_NAME_FILE_PATH, INCLUDED_SITES_FILE_PATH
-from document_generator import InspectionReport
 from executor import Executor
 from sites import SITES_BY_ID
 from util import read_file, p
@@ -18,4 +17,8 @@ if __name__ == '__main__':
     except Exception as e:
         p('出现错误，请将下方报错信息反馈给开发者')
         p(repr(e))
+        input("按回车键退出")
+        os._exit(1)
 
+    input("按回车键退出")
+    os._exit(0)

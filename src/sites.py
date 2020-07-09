@@ -422,7 +422,7 @@ class CE(Site):
     initial_url = "http://www.creditenergy.gov.cn/report/search?name={company_name}&type="
 
 
-class MOHURD(Site):
+class MOHURD_JZSC(Site):
     site_id = 32
     name = "全国建筑市场监管公共服务平台"
     initial_url = "http://jzsc.mohurd.gov.cn/data/company?complexname={company_name}"
@@ -448,6 +448,21 @@ class CUSTOMS(NotImplementedSite):
     site_id = 36
     name = "海关总署"
 
+class CTAX_JS(NotImplementedSite):
+    site_id = 37
+    name = "国家税务总局江苏省税务局网站"
+
+class MOHURD(Site):
+    site_id = 38
+    name = "中华人民共和国住房和城乡建设部网站"
+    initial_url = "http://search.mohurd.gov.cn/?tn=mohurd&lastq=%24wstquerystring%24&sort=last-modified+desc&rn=10&auth_info=&table_id=%24wsttableid%24&pn=0&query={company_name}&ty=a&ukl=&uka=&ukf=&ukt=&sl=&ts=&te=&upg=0"
+
+    @classmethod
+    def get_screenshot_element(cls, company_name: str, driver: WebDriver):
+        driver.get(cls.get_initial_url(company_name))
+        driver.maximize_window()
+
+        return driver.find_element_by_css_selector('main.main-content')
 
 def get_sites():
     l = []
@@ -470,7 +485,7 @@ SITES_BY_ID = {
 if __name__ == '__main__':
     # print(SITES)
     company_name = "常高新集团有限公司"
-    STATS.grab(company_name)
+    MOHURD.grab(company_name)
     # for s in SITES:
     #     s.grab(company_name)
     pass

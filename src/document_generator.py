@@ -6,7 +6,8 @@ from docx.oxml.ns import qn
 from docx.shared import Mm
 
 from config import REPORT_PATH, REPORT_FILENAME, SCREENSHOT_FILENAME_PAGE, \
-    SCREENSHOT_FILENAME_SCREEN, REPORT_IMAGE_WIDTH, REPORT_FONT_NAME
+    SCREENSHOT_FILENAME_SCREEN, REPORT_IMAGE_WIDTH, REPORT_FONT_NAME, SCREENSHOT_TAKE_SCREEN, \
+    SCREENSHOT_TAKE_PAGE
 from sites import Site, SITES
 
 
@@ -45,9 +46,9 @@ class InspectionReport:
                                                                    SCREENSHOT_FILENAME_PAGE)
         screen_shot_path_screen = site.get_screenshot_file_name_full(self.company_name,
                                                                      SCREENSHOT_FILENAME_SCREEN)
-        if exists(screen_shot_path_page):
+        if SCREENSHOT_TAKE_PAGE and exists(screen_shot_path_page):
             d.add_picture(screen_shot_path_page, REPORT_IMAGE_WIDTH)
-        if exists(screen_shot_path_screen):
+        if SCREENSHOT_TAKE_SCREEN and exists(screen_shot_path_screen):
             d.add_picture(screen_shot_path_screen, REPORT_IMAGE_WIDTH)
 
         d.add_page_break()

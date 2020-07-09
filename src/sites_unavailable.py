@@ -136,3 +136,19 @@
 #         )
 #
 #         return driver.find_element_by_tag_name('huilan-amj-page-container')
+
+# class CTAX_JS(Site):
+#     site_id = 37
+#     name = "国家税务总局江苏省税务局网站"
+#     initial_url = "https://jiangsu.chinatax.gov.cn/jsearchfront/search.do?websiteid=320000000000000&searchid=21&pg=&p=1&tpl=22&q={company_name}&pq={company_name}&oq=&eq=&pos=&sortType=&begin=&end="
+#
+#     @classmethod
+#     def get_screenshot_element(cls, company_name: str, driver: WebDriver):
+#         driver.get(cls.get_initial_url(company_name))
+#         driver.maximize_window()
+#
+#         WebDriverWait(driver, 10).until(
+#             EC.presence_of_element_located((By.CSS_SELECTOR, 'div.con_left'))
+#         )
+#
+#         return driver.find_element_by_tag_name('body')
