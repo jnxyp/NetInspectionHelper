@@ -373,6 +373,7 @@ class STATS(Site):
 
         return driver.find_element_by_tag_name('html')
 
+
 class NEA(Site):
     site_id = 27
     name = "国家能源局网站"
@@ -448,9 +449,11 @@ class CUSTOMS(NotImplementedSite):
     site_id = 36
     name = "海关总署"
 
+
 class CTAX_JS(NotImplementedSite):
     site_id = 37
     name = "国家税务总局江苏省税务局网站"
+
 
 class MOHURD(Site):
     site_id = 38
@@ -467,6 +470,18 @@ class MOHURD(Site):
         )
 
         return driver.find_element_by_css_selector('main.main-content')
+
+
+class BJSSXH(Site):
+    site_id = 39
+    name = "中国商务信用平台"
+    initial_url = "http://www.bjssxh.org.cn/dom/search.php?navtype=doc&keyWord={encoded_name}&username=bjssxh"
+
+    @classmethod
+    def get_initial_url(cls, company_name: str) -> str:
+        return cls.initial_url.format(
+            encoded_name=str(company_name.encode('gbk')).replace('\\x', '%')[2:-1].upper())
+
 
 def get_sites():
     l = []
@@ -489,7 +504,7 @@ SITES_BY_ID = {
 if __name__ == '__main__':
     # print(SITES)
     company_name = "常高新集团有限公司"
-    MOHURD.grab(company_name)
+    BJSSXH.grab(company_name)
     # for s in SITES:
     #     s.grab(company_name)
     pass
