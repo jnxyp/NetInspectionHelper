@@ -462,6 +462,10 @@ class MOHURD(Site):
         driver.get(cls.get_initial_url(company_name))
         driver.maximize_window()
 
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'p.result-total'))
+        )
+
         return driver.find_element_by_css_selector('main.main-content')
 
 def get_sites():
