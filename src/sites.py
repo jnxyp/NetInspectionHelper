@@ -187,9 +187,9 @@ class QCC(NotImplementedSite):
     name = "企查查"
 
 
-class BAIDU(Site):
+class BAIDUBAIKE(Site):
     site_id = 6
-    name = "百度"
+    name = "百度百科"
     initial_url = "https://baike.baidu.com/item/{company_name}"
 
 
@@ -482,6 +482,28 @@ class BJSSXH(Site):
         return cls.initial_url.format(
             encoded_name=str(company_name.encode('gbk')).replace('\\x', '%')[2:-1].upper())
 
+class BAIDU(Site):
+    site_id = 40
+    name = "百度"
+    initial_url = "http://www.baidu.com"
+
+    @classmethod
+    def get_screenshot_element(cls, company_name: str, driver: WebDriver):
+        driver.get(cls.get_initial_url(company_name))
+        driver.maximize_window()
+
+        time.sleep(3)
+
+        text_input = driver.find_element_by_id('kw')
+        text_input.send_keys(company_name)
+
+        search_button = driver.find_element_by_id('su')
+        search_button.click()
+
+        time.sleep(3)
+
+        return driver.find_element_by_tag_name('body')
+
 
 def get_sites():
     l = []
@@ -504,7 +526,7 @@ SITES_BY_ID = {
 if __name__ == '__main__':
     # print(SITES)
     company_name = "常高新集团有限公司"
-    BJSSXH.grab(company_name)
+    BAIDU.grab(company_name)
     # for s in SITES:
     #     s.grab(company_name)
     pass

@@ -50,12 +50,12 @@ MAX_RETRY = 3
 
 # 浏览器类型及驱动路径
 # Edge Legacy
-# WEBDRIVER = webdriver.Edge
-# WEBDRIVER_PATH = 'MicrosoftWebDriver.exe'
+WEBDRIVER = webdriver.Edge
+WEBDRIVER_PATH = 'MicrosoftWebDriver.exe'
 
 # Edge 83.0.478.54
-WEBDRIVER = webdriver.Edge
-WEBDRIVER_PATH = join(ROOT_PATH, 'msedgedriver_83.0.478.54.exe')
+# WEBDRIVER = webdriver.Edge
+# WEBDRIVER_PATH = join(ROOT_PATH, 'msedgedriver_83.0.478.54.exe')
 
 if __name__ == '__main__':
     print(SCREENSHOT_PATH)
