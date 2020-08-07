@@ -1,6 +1,8 @@
 {
   "screenshots": {
     "page": true,
-    "screen": true
+    "screen": true,
+    "page_taskbar": true,
+    "taskbar_resize_factor": 1.25
   }
 }

@@ -94,7 +94,6 @@ class Site():
     def get_screenshot_element(cls, company_name: str, driver: WebDriver):
         driver.get(cls.get_initial_url(company_name))
         driver.maximize_window()
-
         time.sleep(2)
 
         return driver.find_element_by_tag_name('body')

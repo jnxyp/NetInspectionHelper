@@ -8,10 +8,12 @@ DEBUG = True
 ROOT_PATH = dirname(abspath(__file__))
 
 CONFIG = {
-  "screenshots": {
-    "page": True,
-    "screen": True
-  }
+    "screenshots": {
+        "page": True,
+        "screen": True,
+        "page_taskbar": True,
+        "taskbar_resize_factor": 1.25
+    }
 }
 
 with open('config.json') as f:
@@ -29,6 +31,9 @@ SCREENSHOT_FILENAME_PAGE = 'page.png'
 
 SCREENSHOT_TAKE_SCREEN = CONFIG['screenshots']['screen']
 SCREENSHOT_TAKE_PAGE = CONFIG['screenshots']['page']
+SCREENSHOT_PAGE_TASKBAR = CONFIG['screenshots']['page_taskbar']
+SCREENSHOT_PAGE_TASKBAR_HEIGHT = 40  # in pixels
+SCREENSHOT_PAGE_TASKBAR_RESIZE_FACTOR = CONFIG['screenshots']['taskbar_resize_factor']
 
 # 报告输出文件路径和文件名格式
 REPORT_PATH = join(ROOT_PATH, 'reports')
@@ -50,12 +55,12 @@ MAX_RETRY = 3
 
 # 浏览器类型及驱动路径
 # Edge Legacy
-WEBDRIVER = webdriver.Edge
-WEBDRIVER_PATH = 'MicrosoftWebDriver.exe'
+# WEBDRIVER = webdriver.Edge
+# WEBDRIVER_PATH = 'MicrosoftWebDriver.exe'
 
 # Edge 83.0.478.54
-# WEBDRIVER = webdriver.Edge
-# WEBDRIVER_PATH = join(ROOT_PATH, 'msedgedriver_83.0.478.54.exe')
+WEBDRIVER = webdriver.Edge
+WEBDRIVER_PATH = join(ROOT_PATH, 'msedgedriver_83.0.478.54.exe')
 
 if __name__ == '__main__':
     print(SCREENSHOT_PATH)

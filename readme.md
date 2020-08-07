@@ -1,5 +1,5 @@
 # 网络审计截图工具
-版本：`1.2.4` 作者： jn_xyp (jinan.xyp@gmail.com)
+版本：`1.3.0` 作者： jn_xyp (jinan.xyp@gmail.com)
 
 ## 软件功能
 
@@ -91,5 +91,7 @@
 - 截图文件的命名以`数据源ID-数据源名称`作为前缀，结尾为`page`的为整个网页的截图，
 结尾为`screen`的为包含任务栏日期时间的全屏幕截图。
 - 如仅需要抓取整个网页的截图(page)，请在根目录下`config.json`中将`"screen": true`改为`"screen": false`，反之亦然。
+- 如需为网页截图(page)也添加任务栏，请在根目录下`config.json`中将`"page_taskbar": false`改为
+`"page_taskbar": true`，并在`"taskbar_resize_factor":`后输入您的系统缩放比率。缩放比率可以在桌面右键->【显示设置】->【缩放与布局】部分看到。
 - 程序的报告Word文档输出位于根目录下`reports`文件夹中，以公司名称命名。
 - 如需中止抓取，可在程序界面按`Ctrl-C`或直接关闭程序窗口。
